@@ -1,0 +1,52 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Backup & log files
+*.log
+*.vspscc
+*.vssscc
+*.tmp
+*.bak
+*.swp
+
+# Visual Studio files
+.vscode/
+.vs/
+*.dbmdl
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NuGet packages
+*.nupkg
+# NuGet package restore
+packages/
+*.snupkg
+
+# IIS
+*.vspscc
+*.userprefs
+*.publish.xml
+
+# Rider project files
+.idea/
+
+# Resharper files
+*.DotSettings.user
+
+# Entity Framework
+Migrations/
+
+# Others
+*.DS_Store
+Thumbs.db
+
+# Environment
+.env
