@@ -7,6 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Linq.Expressions;
+using SkillQuakeAPI.Models.DTO;
 
 namespace SkillQuakeAPI.Controllers
 {

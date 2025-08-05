@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+
+
+using Microsoft.EntityFrameworkCore;
 using SkillQuakeAPI.Models;
 
 namespace SkillQuakeAPI.Data

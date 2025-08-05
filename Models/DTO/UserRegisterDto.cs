@@ -1,4 +1,4 @@
-﻿namespace SkillQuakeAPI.Models
+﻿namespace SkillQuakeAPI.Models.DTO
 {
     public class UserRegisterDto
     {
