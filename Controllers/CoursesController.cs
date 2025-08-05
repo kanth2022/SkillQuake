@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SkillQuakeAPI.Data;
 using SkillQuakeAPI.Models;
+using SkillQuakeAPI.Models.DTO;
 
 namespace SkillQuakeAPI.Controllers
 {
@@ -34,15 +35,27 @@ namespace SkillQuakeAPI.Controllers
             }
         }
         [HttpPost]
-        public async Task<IActionResult> CreateCourse([FromBody] Course course)
+        public async Task<IActionResult> CreateCourse([FromBody] CourseCreateDto dto)
         {
-            var coach = await _context.Users.FindAsync(course.CoachId);
+            var coach = await _context.Users.FindAsync(dto.CoachId);
             if (coach == null || coach.Role.ToLower() != "coach")
                 return BadRequest("Invalid coach Id");
-                _context.Courses.Add(course);
+
+            var course = new Course
+            {
+                Title = dto.Title,
+                Description = dto.Description,
+                VideoUrl = dto.VideoUrl,
+                Price = dto.Price,
+                CoachId = dto.CoachId
+            };
+
+            _context.Courses.Add(course);
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Course created successfully" });
         }
+
+
     }
 }
