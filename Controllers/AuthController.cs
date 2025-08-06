@@ -177,96 +177,51 @@ namespace SkillQuakeAPI.Controllers
 
         }
 
-
         [HttpDelete("delete/{id}")]
-
         public async Task<IActionResult> DeleteUser(int id)
-
         {
-
             var user = await _context.Users.FindAsync(id);
-
             if (user == null)
-
                 return NotFound("User not found");
 
             _context.Users.Remove(user);
-
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "User deleted successfully" });
-
         }
-
         // GET: api/auth/coaches
-
         [HttpGet("coaches")]
-
         public async Task<IActionResult> GetCoaches()
-
         {
-
             var coaches = await _context.Users
-
                 .Where(u => u.Role.ToLower() == "coach")
-
                 .Select(u => new
-
                 {
-
                     u.Id,
-
                     u.Name,
-
                     u.Email,
-
                     u.Phone,
-
                     u.Role
-
                 })
-
                 .ToListAsync();
 
             return Ok(coaches);
-
         }
-
         // GET: api/auth/learners
-
         [HttpGet("learners")]
-
         public async Task<IActionResult> GetLearners()
-
         {
-
             var learners = await _context.Users
-
                 .Where(u => u.Role.ToLower() == "learner")
-
                 .Select(u => new
-
                 {
-
                     u.Id,
-
                     u.Name,
-
                     u.Email,
-
                     u.Phone,
-
                     u.Role
-
                 })
-
                 .ToListAsync();
 
             return Ok(learners);
 
-      
-        }
-
-    }
-
-}
