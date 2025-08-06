@@ -6,7 +6,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using System.Linq.Expressions;
 using SkillQuakeAPI.Models.DTO;
 
 namespace SkillQuakeAPI.Controllers
@@ -32,6 +31,10 @@ namespace SkillQuakeAPI.Controllers
             var exists = await _context.Users.AnyAsync(u => u.Email == userDto.Email);
             if (exists)
                 return BadRequest("User already exists.");
+
+            var phoneExists = await _context.Users.AnyAsync(u => u.Phone == userDto.Phone);
+            if (phoneExists)
+                return BadRequest("Phone number already in use.");
 
             var user = new User
             {
@@ -67,6 +70,7 @@ namespace SkillQuakeAPI.Controllers
 
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var Key = Encoding.UTF8.GetBytes(_config["Jwt:Key"]);
+
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new[]
@@ -94,11 +98,60 @@ namespace SkillQuakeAPI.Controllers
                 });
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+                return NotFound("User not found");
+
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "User deleted successfully" });
+        }
+        // GET: api/auth/coaches
+        [HttpGet("coaches")]
+        public async Task<IActionResult> GetCoaches()
+        {
+            var coaches = await _context.Users
+                .Where(u => u.Role.ToLower() == "coach")
+                .Select(u => new
+                {
+                    u.Id,
+                    u.Name,
+                    u.Email,
+                    u.Phone,
+                    u.Role
+                })
+                .ToListAsync();
+
+            return Ok(coaches);
+        }
+        // GET: api/auth/learners
+        [HttpGet("learners")]
+        public async Task<IActionResult> GetLearners()
+        {
+            var learners = await _context.Users
+                .Where(u => u.Role.ToLower() == "learner")
+                .Select(u => new
+                {
+                    u.Id,
+                    u.Name,
+                    u.Email,
+                    u.Phone,
+                    u.Role
+                })
+                .ToListAsync();
+
+            return Ok(learners);
+        }
+
     }
 
 }
