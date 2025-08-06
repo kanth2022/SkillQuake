@@ -1,4 +1,4 @@
-﻿namespace SkillQuakeAPI.Models.DTO
+namespace SkillQuakeAPI.Models.DTO
 {
     public class CourseCreateDto
     {

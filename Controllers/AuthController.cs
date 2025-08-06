@@ -189,6 +189,7 @@ namespace SkillQuakeAPI.Controllers
 
             return Ok(new { message = "User deleted successfully" });
         }
+
         // GET: api/auth/coaches
         [HttpGet("coaches")]
         public async Task<IActionResult> GetCoaches()
@@ -225,3 +226,8 @@ namespace SkillQuakeAPI.Controllers
 
             return Ok(learners);
 
+        }
+
+    }
+
+}
