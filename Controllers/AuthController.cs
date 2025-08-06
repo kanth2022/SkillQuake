@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -59,7 +59,6 @@ namespace SkillQuakeAPI.Controllers
                 return BadRequest("User already exists.");
 
             var phoneExists = await _context.Users.AnyAsync(u => u.Phone == userDto.Phone);
-
             if (phoneExists)
 
                 return BadRequest("Phone number already in use.");
@@ -170,7 +169,6 @@ namespace SkillQuakeAPI.Controllers
             }
 
             catch (Exception ex)
-
             {
 
                 return StatusCode(500, $"Internal server error: {ex.Message}");
@@ -178,6 +176,7 @@ namespace SkillQuakeAPI.Controllers
             }
 
         }
+
 
         [HttpDelete("delete/{id}")]
 
@@ -265,6 +264,7 @@ namespace SkillQuakeAPI.Controllers
 
             return Ok(learners);
 
+      
         }
 
     }
