@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SkillQuakeAPI.Data;
 using SkillQuakeAPI.Models;
@@ -37,6 +37,7 @@ namespace SkillQuakeAPI.Controllers
                 Price = dto.Price,
                 CoachId = dto.CoachId
             };
+            
 
             _context.Courses.Add(course);
             await _context.SaveChangesAsync();
@@ -82,7 +83,9 @@ namespace SkillQuakeAPI.Controllers
                 .ToListAsync();
 
             return Ok(courses);
+       
         }
 
     }
 }
+
