@@ -1,8 +1,9 @@
-using Microsoft.EntityFrameworkCore;
-using SkillQuakeAPI.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using SkillQuakeAPI.Data;
 using System.Text;
+using System.Text.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 
 var jwtKey = builder.Configuration["Jwt:Key"];
@@ -28,7 +29,6 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
-// Add services to the container.
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -40,7 +40,11 @@ builder.Services.AddCors(options =>
 });
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    options.JsonSerializerOptions.WriteIndented = true; // Optional: makes JSON pretty in responses
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -48,6 +52,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 
 var app = builder.Build();
 
+app.UseCors("AllowAll");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -55,11 +60,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("AllowAll");
+
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
+
 
 app.MapControllers();
 
