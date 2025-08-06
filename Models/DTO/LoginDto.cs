@@ -1,8 +1,12 @@
-﻿namespace SkillQuakeAPI.Models.DTO
+using System.ComponentModel.DataAnnotations;
+
+namespace SkillQuakeAPI.Models.DTO
 {
     public class LoginDto
     {
-        public string Email { get; set; }   
+        [Required]
+        public string Email { get; set; }
+        [Required]
         public string PasswordHash { get; set; }
     }
 }

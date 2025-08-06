@@ -1,5 +1,8 @@
-﻿namespace SkillQuakeAPI.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace SkillQuakeAPI.Models
 {
+    [Index(nameof(Phone), IsUnique = true)]
     public class User
     {
         public int Id { get; set; }
