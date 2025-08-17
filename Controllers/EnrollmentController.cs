@@ -74,4 +74,19 @@ public class EnrollmentController : ControllerBase
 
     }
 
+    [HttpDelete("unenroll")]
+    public async Task<IActionResult> Unenroll([FromBody] EnrollDto dto)
+    {
+        var enrollment = await _context.Enrollments
+            .FirstOrDefaultAsync(e => e.UserId == dto.UserId && e.CourseId == dto.CourseId);
+
+        if (enrollment == null)
+            return NotFound("Enrollment not found");
+
+        _context.Enrollments.Remove(enrollment);
+        await _context.SaveChangesAsync();
+
+        return Ok(new { message = "Unenrollment successful" });
+    }
+
 }

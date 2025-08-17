@@ -106,5 +106,23 @@ namespace SkillQuakeAPI.Controllers
 
             return Ok(grouped);
         }
+
+        [HttpDelete("{userId}/{courseId}")]
+        public IActionResult DeleteRating(int userId, int courseId)
+        {
+            var rating = _context.Ratings
+                .FirstOrDefault(r => r.UserId == userId && r.CourseId == courseId);
+
+            if (rating == null)
+            {
+                return NotFound("Rating not found.");
+            }
+
+            _context.Ratings.Remove(rating);
+            _context.SaveChanges();
+
+            return Ok("Rating deleted successfully.");
+        }
+
     }
 }
