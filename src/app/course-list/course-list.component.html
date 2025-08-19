@@ -1,0 +1,36 @@
+<!-- Navbar -->
+<div class="navbar">
+  <div class="logo" routerLink="/">SkillQuake</div>
+  <ul class="nav-links">
+    <li><a routerLink="/">Home</a></li>
+    <li><a [routerLink]="['/home']" fragment="about">About</a></li>
+    <li><a [routerLink]="['/home']" fragment="categories">Categories</a></li>
+    <div class="auth-button">
+      <a routerLink="/login" class="login-btn">Login</a>
+    </div>
+    <!-- <li><a class="login-button" (click)="login()">Login</a></li> -->
+  </ul>
+</div>
+
+<h2>Available Courses</h2>
+  <head>
+    <style>
+        h2 {
+            padding-left: 18px;
+        }
+    </style>
+  </head>
+
+  <div class="course-list">
+  
+  <div *ngIf="courses.length === 0">
+    <p>No courses available.</p>
+  </div>
+ 
+  <div *ngFor="let course of courses" class="course-card">
+    <img [src]="getCourseImage(course.title)" alt="{{ course.title }}" class="course-image" />
+    <h3>{{ course.title }}</h3>
+    <p>{{ course.description }}</p>
+    <button routerLink="/login" class="learn-more-btn">Learn More</button>
+  </div>
+</div>

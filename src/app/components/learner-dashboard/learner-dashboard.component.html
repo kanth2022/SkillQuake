@@ -1,0 +1,103 @@
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo" routerLink="/">SkillQuake</div>
+    <ul class="nav-links">
+      <li><a routerLink="/">Home</a></li>
+      <li><a [routerLink]="['/home']" fragment="about">About</a></li>
+      <li><a [routerLink]="['/home']" fragment="categories">Categories</a></li>
+      <li><a class="logout-button" (click)="logout()">Logout</a></li>
+    </ul>
+  </div>
+  
+  <h3>Learner Dashboard</h3>
+  <head>
+    <style>
+        h3 {
+            padding-left: 20px;
+        }
+    </style>
+  </head>
+  
+
+  <div class="dashboard-container">
+    <h2>Available Courses</h2>
+   
+    <div class="courses-grid">
+      <div class="course-card" *ngFor="let course of courses">
+        <img [src]="getCourseImage(course.title)" alt="{{ course.title }}" />
+        <h3>{{ course.title }}</h3>
+        <p>{{ course.description }}</p>
+        <p><strong>Price:</strong> ₹{{ course.price }}</p>
+   
+        <!--Buttons -->
+        <button
+          class="enroll-btn"
+  *ngIf="!isEnrolled(course.id)"
+  (click)="enroll(course.id)">
+          Enroll
+        </button>
+   
+        <button
+          class="open-btn"
+  *ngIf="isEnrolled(course.id)"
+          (click)="openCourse(course.videoUrl)">
+          Go to Course
+        </button>
+      </div>
+    </div>
+   
+    <!-- My Enrollments Section -->
+    <div class="enrollments-section">
+      <h2>My Enrollments</h2>
+      <div *ngIf="enrolledCoursesDetails.length === 0">
+        <p>No courses enrolled yet.</p>
+      </div>
+    
+      <div class="enrolled-grid">
+        <div class="course-card" *ngFor="let course of enrolledCoursesDetails">
+          <img [src]="getCourseImage(course.title)" alt="{{ course.title }}" />
+          <h3>{{ course.title }}</h3>
+          <p class="course-description">{{ course.description }}</p>
+    
+          <!-- Open Course -->
+          <button class="open-btn" (click)="openCourse(course.videoUrl)">
+            Go to Course
+          </button>
+    
+          <!-- Unenroll Button -->
+          <button class="unenroll-btn" (click)="unenroll(course.id)">
+            Unenroll
+          </button>
+        </div>
+      </div>
+    </div>
+    
+ 
+  
+  
+
+  <div class = "container">
+    <h1>Rate the course</h1>
+  <div class ="irating"*ngFor="let course of enrolledCoursesDetails">
+    <h2>{{ course.title }}</h2>
+    <p>{{ course.description }}</p>
+  
+    <!--  Star Rating -->
+    <div class="rating">
+      <span *ngFor="let star of [1,2,3,4,5]"
+            (click)="setRating(course.id, star)"
+            [class.filled]="getRating(course.id) >= star">
+        ★
+      </span>
+    </div>
+  
+    <!--  Review -->
+    <textarea [(ngModel)]="reviews[course.id]" placeholder="Write your review"></textarea>
+  
+    <button (click)="submitRating(course.id)">Submit Rating</button>
+  </div>
+</div>
+  
+  
+
+

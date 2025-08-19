@@ -1,0 +1,68 @@
+<!-- Navbar -->
+<div class="navbar">
+  <div class="logo" routerLink="/">SkillQuake</div>
+  <ul class="nav-links">
+    <li><a routerLink="/">Home</a></li>
+    <li><a [routerLink]="['/home']" fragment="about">About</a></li>
+    <li><a [routerLink]="['/home']" fragment="categories">Categories</a></li>
+    <li><a class="logout-button" (click)="logout()">Logout</a></li>
+  </ul>
+</div>
+
+
+<h3>Coach Dashboard</h3>
+<head>
+  <style>
+      h3 {
+          padding-left: 20px;
+      }
+  </style>
+</head>
+
+
+<div class="dashboard-page">
+ 
+  <!-- Create Course Section -->
+  <div class="form-section">
+    <div class="form-box">
+      <h2>Create Course</h2>
+      <input type="text" placeholder="Title" [(ngModel)]="title" />
+      <textarea placeholder="Description" [(ngModel)]="description"></textarea>
+      <input type="number" placeholder="Price" [(ngModel)]="price" />
+      <input type="text" placeholder="Video URL" [(ngModel)]="videoUrl" />
+      <button class="create-button" (click)="createCourse()">Create</button>
+    </div>
+  </div>
+ 
+  <!-- My Courses Section -->
+  <div class="courses-section">
+    <div class="courses-box">
+      <h2>My Courses</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of myCourses">
+            <td>{{ course.title }}</td>
+            <td>₹{{ course.price }}</td>
+            <td>
+              <button class="delete-btn" (click)="deleteCourse(course.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+</div>
+
+<footer id ="about" class="footer">
+<hr style="border-top: 1px solid #888; margin: 20px 0;">
+<div class="footer__copyright">
+  <small>Copyright © SkillQuake</small>
+</div>
+</footer>

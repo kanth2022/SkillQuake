@@ -1,0 +1,160 @@
+/* Background */
+:host {
+  display: block;
+  background-color: #1a1a2e; /* dark background */
+  min-height: 100vh;
+  color: white;
+}
+ 
+/* navbar styles - */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #14ff4f;
+  padding: 18px 20px;
+  color: white;
+  align-items: center;
+}
+ 
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
+ 
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+ 
+.nav-links li {
+  display: inline-block;
+}
+ 
+.nav-links a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+}
+ 
+.nav-links a:hover {
+  color: #f65340;
+}
+ 
+.logout-button {
+  padding: 10px 18px;
+  background-color: #f65340;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: -5px;
+  cursor: pointer;
+}
+ 
+.logout-button:hover {
+  background-color: #0d0d1f;
+}
+ 
+/* Dashboard content */
+.dashboard-page {
+  background-color: #0d0d1f;
+  min-height: 100vh;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+ 
+/* Form Section */
+.form-section .form-box {
+  background-color: #1c1c2e;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.5);
+  width: 400px;
+  text-align: center;
+}
+ 
+.form-box h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+ 
+.form-box input,
+.form-box textarea {
+  width: 80%;
+  max-width: 300px;
+  padding: 20px;
+  margin: 10px auto;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid #0f4c75;
+  background-color: #0c1523;
+  color: white;
+  outline: none;
+}
+ 
+textarea {
+  resize: none;
+  height: 60px;
+}
+ 
+.create-button {
+  width: 50%;
+  background-color: #f65340;
+  color: white;
+  padding: 13px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+ 
+.create-button:hover {
+  background-color: #e04634;
+}
+ 
+/* Courses Section */
+.courses-section .courses-box {
+  background-color: #1c1c2e;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.5);
+  width: 80%;
+  max-width: 800px;
+  color: white;
+}
+ 
+.courses-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+ 
+.courses-box th, .courses-box td {
+  padding: 12px;
+  border-bottom: 1px solid #333;
+}
+ 
+.courses-box th {
+  background-color: #0f4c75;
+}
+ 
+.delete-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+ 
+.delete-btn:hover {
+  background-color: darkred;
+}
+ 
