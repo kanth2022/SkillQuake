@@ -10,13 +10,13 @@ body {
     justify-content: center;
     align-items: center;
     padding: 60px 20px;
-    background-color: #0d0d1f;
+    background: #0d0d1f;
     min-height: 100vh;
     box-sizing: border-box;
   }
    
   .register-form {
-    background-color: #1c1c2c;
+    background: linear-gradient(to right, #aa5fff, #feb47b); 
     padding: 40px;
     border-radius: 12px;
     width: 100%;
@@ -29,7 +29,7 @@ body {
   .register-form h2 {
     text-align: center;
     margin-bottom: 30px;
-    
+    color: #000000; 
   }
    
   input {
@@ -86,7 +86,7 @@ select option[disabled]{
 .switch-link {
   margin-top: 20px;
   text-align: center;
-  color: #ccc;
+  color: #000000;
 }
  
 .signup-link {

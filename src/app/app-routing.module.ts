@@ -9,7 +9,7 @@ import { CoachDashboardComponent } from './components/coach-dashboard/coach-dash
 import { LearnerDashboardComponent } from './components/learner-dashboard/learner-dashboard.component';
 
 
-const routes: Routes = [
+const routes: Routes = [  
   {path: '',redirectTo:'home',pathMatch: 'full' },
   {path: 'home',component:HomeComponent},
     {path:'courses', component: CourseListComponent},

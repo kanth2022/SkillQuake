@@ -42,7 +42,6 @@ export class LoginComponent {
           this.router.navigate(['/learner-dashboard']);
           alert('Welcome Learner!');
         }
-        // TODO: Navigate to dashboard based on role
       },
       error: (err) => {
         console.error('Login failed:', err);

@@ -27,7 +27,7 @@ export class CourseListComponent implements OnInit {
   ngOnInit(): void {
     this.api.getAllCourses().subscribe({
       next: (res: Course[]) => {
-        console.log("Courses from API:", res);  // 👀 debug
+        console.log("Courses from API:", res);   
   this.courses = res;
       },
       error: err => console.error("Error fetching courses:", err)

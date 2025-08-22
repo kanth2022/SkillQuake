@@ -22,7 +22,7 @@ body {
   }
    
   .register-form {
-    background-color: #1a1a2e; 
+    background: linear-gradient(to right, #aa5fff, #feb47b); 
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(21, 222, 6, 0.3); 
@@ -32,7 +32,7 @@ body {
   }
    
   .register-form h2 {
-    color: #c5c6c7; 
+    color: #000000; 
     margin-bottom: 30px;
     font-size: 2em;
   }
@@ -73,7 +73,7 @@ body {
   .switch-link {
     margin-top: 20px;
     text-align: center;
-    color: #ccc;
+    color: #000000;
   }
    
   .signup-link {

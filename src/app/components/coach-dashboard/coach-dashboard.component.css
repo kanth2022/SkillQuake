@@ -10,7 +10,7 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color: #14ff4f;
+  background: linear-gradient(to right, #aa5fff, #ff9a9e);
   padding: 18px 20px;
   color: white;
   align-items: center;
@@ -73,7 +73,7 @@
  
 /* Form Section */
 .form-section .form-box {
-  background-color: #1c1c2e;
+  background: linear-gradient(to right, #aa5fff, #feb47b); 
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.5);
